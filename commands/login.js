@@ -34,7 +34,14 @@ module.exports.run = async (bot, message, args) => {
       .setURL("https://roblox.com")
       .addBlankField(true);
 
-      bot.channels.find("name","general").send({embed});
+      var guildList = client.guilds.array(); //all the server the bot is in
+      try {
+          guildList.forEach(guild => guild.defaultChannel.send({embed}); //send in general
+      } catch (err) {
+          console.log("Could not send message to " + guild.name);
+      }
+
+      //bot.channels.find("name","general").send({embed}); this only send in one server
 
     });
   })
