@@ -1,6 +1,7 @@
 
 const Discord = require("discord.js")
 const rbx = require('noblox.js');
+const randomColor = require('randomcolor'); // import the script
 
 module.exports.run = async (bot, message, args) => {
 
