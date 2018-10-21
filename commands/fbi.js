@@ -56,7 +56,7 @@ module.exports.run = async (bot, message, args) => {
         .setColor(randomColor())
         .addField("Error", "failed to handle request" + userId, true));
 
-        throw new Error('abort promise chain');
+        throw new Error('abort promise chain'); //drop stack
       })
     })
 
