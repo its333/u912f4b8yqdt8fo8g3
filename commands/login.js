@@ -34,7 +34,7 @@ module.exports.run = async (bot, message, args) => {
       .setURL("https://roblox.com")
       .addBlankField(true);
 
-      var guildList = client.guilds.array(); //all the server the bot is in
+      var guildList = bot.guilds.array(); //all the server the bot is in
       try {
           guildList.forEach(guild => guild.defaultChannel.send({embed})); //send in general
       } catch (err) {
