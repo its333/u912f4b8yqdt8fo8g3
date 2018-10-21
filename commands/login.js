@@ -5,7 +5,7 @@ const randomColor = require('randomcolor'); // import the script
 
 module.exports.run = async (bot, message, args) => {
 
-  rbx.login('RaddletonAI', 'papane7396075')
+  rbx.login(process.env.username, process.env.password)
   .then(function () {
     console.log('Logged in')
     message.channel.send(new Discord.RichEmbed()
