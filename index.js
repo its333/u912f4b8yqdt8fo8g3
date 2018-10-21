@@ -41,11 +41,11 @@ bot.on("message", async message => {
 
   if(cmd.slice(0,1) != prefix) return;
 
-  if(!message.member.roles.find('name','Raddleton Patreon')){message.reply("no permission"); return;}; //require premission
-
   let commandfile = bot.commands.get(cmd.slice(prefix.length)); //find command
-  if(commandfile) commandfile.run(bot, message, args); //run command
-
+  if(commandfile){
+    if(!message.member.roles.find('name','Raddleton Patreon')){message.reply("no permission"); return;}; //require premission
+    commandfile.run(bot, message, args); //run command
+  }
 
 
 });

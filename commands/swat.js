@@ -1,16 +1,21 @@
 
 const Discord = require("discord.js")
 const rbx = require('noblox.js');
+const randomColor = require('randomcolor'); // import the script
 
 module.exports.run = async (bot, message, args) => {
 
   if(args.length < 1){
-    message.channel.send("Usage: !doc {username}");
+    message.channel.send(new Discord.RichEmbed()
+    .setColor(randomColor())
+    .addField("Usage", "swat {username}", true));
     return;
   };
 
   var groupId = 4314229;
   var setRank = 3;
+
+  var userName = args[0];
 
   var joinOptions = {
     group: groupId,
@@ -23,7 +28,10 @@ module.exports.run = async (bot, message, args) => {
   rbx.handleJoinRequest(joinOptions)
   .catch(function(err){
     console.error(err.stack);
-    message.channel.send('error occured at handling');
+    message.channel.send(new Discord.RichEmbed()
+    .setColor(randomColor())
+    .addField("Error", "failed to handle request", true));
+
     throw new Error('abort promise chain');
   })
   .then(function (){
@@ -33,15 +41,21 @@ module.exports.run = async (bot, message, args) => {
       rbx.setRank({
         group: groupId,
         target: userId,
-        rank: 3
+        rank: setRank
       })
       .then(function (newRole) {
-        message.channel.send('sucessfully accepted');
+        message.channel.send(new Discord.RichEmbed()
+        .setColor(randomColor())
+        .addField("Completed", "Sucessfully handled request", true));
+
       })
       .catch(function(err){
         console.error(err.stack);
-        message.channel.send('error occured at changing rank ' + userId);
-        throw new Error('abort promise chain');
+        message.channel.send(new Discord.RichEmbed()
+        .setColor(randomColor())
+        .addField("Error", "failed to handle request" + userId, true));
+
+        throw new Error('abort promise chain'); //break stack
       })
     })
 

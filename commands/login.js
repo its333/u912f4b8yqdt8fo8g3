@@ -7,7 +7,9 @@ module.exports.run = async (bot, message, args) => {
   rbx.login('RaddletonAI', 'papane7396075')
   .then(function () {
     console.log('Logged in')
-    message.channel.send("Successfully logged in");
+    message.channel.send(new Discord.RichEmbed()
+    .setColor(randomColor())
+    .addField("Completed", "Sucessfully logged in", true));
 
     //On message
     var onMessage = rbx.onMessage();
@@ -37,7 +39,9 @@ module.exports.run = async (bot, message, args) => {
   })
   .catch(function (err) {
     console.error(err.stack);
-    message.channel.send("Error logging in");
+    message.channel.send(new Discord.RichEmbed()
+    .setColor(randomColor())
+    .addField("Error", "failed to log in", true));
   });
 
 }

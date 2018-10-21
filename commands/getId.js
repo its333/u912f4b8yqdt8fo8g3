@@ -1,11 +1,16 @@
 
 const Discord = require("discord.js")
 const rbx = require('noblox.js');
+const randomColor = require('randomcolor'); // import the script
 
 module.exports.run = async (bot, message, args) => {
 
+const embedUsage = new Discord.RichEmbed()
+.setColor(randomColor())
+.addField("Usage", "getid {username}", true);
+
   if(args.length < 1){
-    message.channel.send("Usage: }getid username");
+    message.channel.send(embedUsage);
     return;
   };
 
@@ -16,12 +21,18 @@ module.exports.run = async (bot, message, args) => {
   rbx.getIdFromUsername(args[0])
   .catch(function (e) {
     console.log(e);
-    message.channel.send("Error getting id");
+    const embed = new Discord.RichEmbed()
+    .setColor(randomColor())
+    .addField("Error", "Error getting id", true);
+    message.channel.send(embed);
   })
   .then(function (id) {
     if(!id)return;
     console.log(`userId: ${id}`);
-    message.channel.send(`userId: ${id}`);
+    const embed = new Discord.RichEmbed()
+    .setColor(randomColor())
+    .addField("UserId", `${id}`, true);
+    message.channel.send(embed);
   });
 
 }
