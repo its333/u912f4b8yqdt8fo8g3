@@ -5,7 +5,57 @@ const randomColor = require('randomcolor'); // import the script
 
 module.exports.run = async (bot, message, args) => {
 
-  rbx.login(process.env.username, process.env.password)
+  var jar = rbx.jar(); //make a new jar
+  rbx.login(process.env.user1, process.env.pass1, jar) //log the jar in
+  .then(function(){
+    console.log(jar); //print to make sure jar created
+    return jar; //return the jar
+  })
+  .then(function(){ //RCPD
+    var onJoinRCPD = rbx.onJoinRequestHandle(4308355,jar) //group id, jar
+    onJoinRCPD.on('data', function (request) { //on join request
+      rbx.getIdFromUsername(request.username).then(function (id) { //get their id
+
+        rbx.getPlayerInfo(id) //get their info using the id
+        .then(function(info){
+          if (info.age < 30) { //reject their request if their account is under 30 days old
+            onJoinRCPD.emit('handle', request, false, function(){ //reject request
+              console.log(`RCPD request rejected: username ${request.username} id ${id} age ${info.age}`);
+            });
+          } else { //if older than 30 days then accept request
+            onJoinRCPD.emit('handle', request, true, function(){ //accept request
+              console.log(`RCPD request accepted: username ${request.username} id ${id} age ${info.age}`);
+            });
+          };
+        });
+
+      });
+    });
+  })
+
+  .then(function(){ //COR
+    var onJoinRCPD = rbx.onJoinRequestHandle(4308364,jar) //group id, jar
+    onJoinRCPD.on('data', function (request) { //on join request
+      rbx.getIdFromUsername(request.username).then(function (id) { //get their id
+
+        rbx.getPlayerInfo(id) //get their info using the id
+        .then(function(info){
+          if (info.age < 30) { //reject their request if their account is under 30 days old
+            onJoinRCPD.emit('handle', request, false, function(){ //reject request
+              console.log(`COR request rejected: username ${request.username} id ${id} age ${info.age}`);
+            });
+          } else { //if older than 30 days then accept request
+            onJoinRCPD.emit('handle', request, true, function(){ //accept request
+              console.log(`COR request accepted: username ${request.username} id ${id} age ${info.age}`);
+            });
+          };
+        });
+
+      });
+    });
+  });
+
+  rbx.login(process.env.user2, process.env.pass2)
   .then(function () {
     console.log('Logged in')
     message.channel.send(new Discord.RichEmbed()
