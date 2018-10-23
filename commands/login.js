@@ -19,7 +19,7 @@ module.exports.run = async (bot, message, args) => {
         rbx.getPlayerInfo(id) //get their info using the id
         .then(function(info){
           if (info.age < 30) { //reject their request if their account is under 30 days old
-            onJoinRCPD.emit('handle', request, false, function(){ //reject request
+            onJoinRCPD.emit('handle', request, null, function(){ //reject request
               console.log(`RCPD request ignored: username ${request.username} id ${id} age ${info.age}`);
             });
           } else { //if older than 30 days then accept request
