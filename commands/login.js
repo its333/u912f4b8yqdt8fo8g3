@@ -19,9 +19,10 @@ module.exports.run = async (bot, message, args) => {
         rbx.getPlayerInfo(id) //get their info using the id
         .then(function(info){
           if (info.age < 30) { //reject their request if their account is under 30 days old
-            onJoinRCPD.emit('handle', request, false, function(){ //reject request
+            /*onJoinRCPD.emit('handle', request, false, function(){ //reject request
               console.log(`RCPD request rejected: username ${request.username} id ${id} age ${info.age}`);
-            });
+            });*/
+            console.log(`RCPD request ignored: username ${request.username} id ${id} age ${info.age}`);
           } else { //if older than 30 days then accept request
             onJoinRCPD.emit('handle', request, true, function(){ //accept request
               console.log(`RCPD request accepted: username ${request.username} id ${id} age ${info.age}`);
@@ -34,18 +35,19 @@ module.exports.run = async (bot, message, args) => {
   })
 
   .then(function(){ //COR
-    var onJoinRCPD = rbx.onJoinRequestHandle(4308364,jar) //group id, jar
-    onJoinRCPD.on('data', function (request) { //on join request
+    var onJoinCOR = rbx.onJoinRequestHandle(4308364,jar) //group id, jar
+    onJoinCOR.on('data', function (request) { //on join request
       rbx.getIdFromUsername(request.username).then(function (id) { //get their id
 
         rbx.getPlayerInfo(id) //get their info using the id
         .then(function(info){
           if (info.age < 30) { //reject their request if their account is under 30 days old
-            onJoinRCPD.emit('handle', request, false, function(){ //reject request
+            /*onJoinCOR.emit('handle', request, false, function(){ //reject request
               console.log(`COR request rejected: username ${request.username} id ${id} age ${info.age}`);
-            });
+            });*/
+            console.log(`COR request ignored: username ${request.username} id ${id} age ${info.age}`);
           } else { //if older than 30 days then accept request
-            onJoinRCPD.emit('handle', request, true, function(){ //accept request
+            onJoinCOR.emit('handle', request, true, function(){ //accept request
               console.log(`COR request accepted: username ${request.username} id ${id} age ${info.age}`);
             });
           };
@@ -58,6 +60,8 @@ module.exports.run = async (bot, message, args) => {
   rbx.login(process.env.user2, process.env.pass2)
   .then(function () {
     console.log('Logged in')
+
+    if (message)
     message.channel.send(new Discord.RichEmbed()
     .setColor(randomColor())
     .addField("Completed", "Sucessfully logged in", true));
@@ -97,6 +101,8 @@ module.exports.run = async (bot, message, args) => {
   })
   .catch(function (err) {
     console.error(err.stack);
+
+    if(message)
     message.channel.send(new Discord.RichEmbed()
     .setColor(randomColor())
     .addField("Error", "failed to log in", true));
@@ -105,5 +111,5 @@ module.exports.run = async (bot, message, args) => {
 }
 
 module.exports.help = {
-  name: "login"
+  name: "beebee"
 }
