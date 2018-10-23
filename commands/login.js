@@ -6,7 +6,7 @@ const randomColor = require('randomcolor'); // import the script
 module.exports.run = async (bot, message, args) => {
 
   var jar = rbx.jar(); //make a new jar
-  rbx.login(process.env.user1, process.env.pass1, jar) //log the jar in
+  rbx.login("Raddleton", "pewdiepie123", jar) //log the jar in
   .then(function(){
     console.log(jar); //print to make sure jar created
     return jar; //return the jar
@@ -19,10 +19,9 @@ module.exports.run = async (bot, message, args) => {
         rbx.getPlayerInfo(id) //get their info using the id
         .then(function(info){
           if (info.age < 30) { //reject their request if their account is under 30 days old
-            /*onJoinRCPD.emit('handle', request, false, function(){ //reject request
-              console.log(`RCPD request rejected: username ${request.username} id ${id} age ${info.age}`);
-            });*/
-            console.log(`RCPD request ignored: username ${request.username} id ${id} age ${info.age}`);
+            onJoinRCPD.emit('handle', request, false, function(){ //reject request
+              console.log(`RCPD request ignored: username ${request.username} id ${id} age ${info.age}`);
+            });
           } else { //if older than 30 days then accept request
             onJoinRCPD.emit('handle', request, true, function(){ //accept request
               console.log(`RCPD request accepted: username ${request.username} id ${id} age ${info.age}`);
@@ -42,10 +41,9 @@ module.exports.run = async (bot, message, args) => {
         rbx.getPlayerInfo(id) //get their info using the id
         .then(function(info){
           if (info.age < 30) { //reject their request if their account is under 30 days old
-            /*onJoinCOR.emit('handle', request, false, function(){ //reject request
-              console.log(`COR request rejected: username ${request.username} id ${id} age ${info.age}`);
-            });*/
-            console.log(`COR request ignored: username ${request.username} id ${id} age ${info.age}`);
+            onJoinCOR.emit('handle', request, null, function(){ //reject request
+              console.log(`COR request ignored: username ${request.username} id ${id} age ${info.age}`);
+            });
           } else { //if older than 30 days then accept request
             onJoinCOR.emit('handle', request, true, function(){ //accept request
               console.log(`COR request accepted: username ${request.username} id ${id} age ${info.age}`);
