@@ -3,6 +3,8 @@ const Discord = require("discord.js")
 const rbx = require('noblox.js');
 
 module.exports.run = async (bot, message, args) => {
+  
+  if(!message.member.roles.find('name','Head Developer')){message.reply("no permission"); return;}; //require premission
 
   if(args.length < 3){
     message.channel.send("Error changing rank");
