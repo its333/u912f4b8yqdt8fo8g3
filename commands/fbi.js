@@ -13,7 +13,7 @@ module.exports.run = async (bot, message, args) => {
     return;
   };
 
-  var groupId = 4314229;
+  var groupId = 4314224;
   var setRank = 2;
 
   var userName = args[0];
