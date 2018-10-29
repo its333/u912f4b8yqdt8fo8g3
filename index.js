@@ -27,7 +27,7 @@ fs.readdir("./commands/", (err,files) => {
 
 bot.on("ready", async () => {
   console.log(`${bot.user.username} is online`);
-  bot.user.setActivity("patreon.com/papane", {type: "DONATE"});
+  bot.user.setActivity("patreon.com/papane", {type: "PLAYING"});
   
   require("./commands/login.js").run(bot,null); //log bot in
 });
