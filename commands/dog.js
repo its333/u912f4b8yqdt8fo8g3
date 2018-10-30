@@ -3,7 +3,7 @@ const Discord = require("discord.js")
 const { get } = require('snekfetch');
 
 async function getDog() {
-	const dog = await get('https://random.dog/woof');
+	const dog = await get('https://dog.ceo/api/breeds/image/random');
 	//if (!dog.text.endsWith('png') && !dog.text.endsWith('jpg')) return await getDog();
 	return `http://random.dog/${dog.text}`;
 }
