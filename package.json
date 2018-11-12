@@ -12,6 +12,7 @@
     "discord.js": "^11.4.2",
     "noblox.js": "^4.1.2",
     "randomcolor": "^0.5.3",
-    "snekfetch": "^4.0.4"
+    "snekfetch": "^4.0.4",
+    "trello": "^0.9.0"
   }
 }
