@@ -44,7 +44,7 @@ module.exports.run = async (bot, message, args) => {
   .then(function (){
     message.channel.send(new Discord.RichEmbed()
     .setColor(randomColor())
-    .addField("Completed", "Sucessfully given permit", true));
+    .addField("Completed", "Sucessfully given VIP", true));
 
   });
 
