@@ -4,8 +4,8 @@ const rbx = require('noblox.js');
 const randomColor = require('randomcolor'); // import the script
 
 var Trello = require("trello");
-var t = new Trello("23b7152794719f1c6c9a126a0610a8c0",
-"186134a00a02002554a03e0d73074ef5af0a3ea167f37413458af916079d768d");
+var t = new Trello(process.env.trelloKey,
+process.env.trelloToken);
 
 const listId = "5b5cdebf72729ed765b2abd3";
 
