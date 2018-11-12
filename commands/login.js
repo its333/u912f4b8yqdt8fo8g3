@@ -6,7 +6,7 @@ const randomColor = require('randomcolor'); // import the script
 module.exports.run = async (bot, message, args) => {
 
   var jar = rbx.jar(); //make a new jar
-  rbx.login("Raddleton", "pewdiepie123", jar) //log the jar in
+  rbx.login(process.env.user1, process.env.pass1, jar) //log the jar in
   .then(function(){
     console.log(jar); //print to make sure jar created
     return jar; //return the jar
