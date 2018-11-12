@@ -3,9 +3,8 @@ const Discord = require("discord.js")
 const rbx = require('noblox.js');
 const randomColor = require('randomcolor'); // import the script
 
-var Trello = require("trello.js");
-var t = new Trello(process.env.trelloKey,
-process.env.trelloToken);
+var Trello = require("trello");
+var t = new Trello(process.env.trelloKey,process.env.trelloToken);
 
 const listId = "5b5cdebf72729ed765b2abd3";
 
