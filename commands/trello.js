@@ -6,7 +6,7 @@ const randomColor = require('randomcolor'); // import the script
 var Trello = require("trello");
 var t = new Trello(process.env.trelloKey,process.env.trelloToken);
 
-const listId = "5b5cdebf72729ed765b2abd3";
+const listId = "5ae0954576d5b4f5d72f95b9";
 
 module.exports.run = async (bot, message, args) => {
 
