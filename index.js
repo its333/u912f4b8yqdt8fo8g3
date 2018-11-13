@@ -48,7 +48,7 @@ bot.on("message", async message => {
     //check channel
     var patreonChannel = message.guild.channels.find("name","patreon")
     var generalChannel = message.guild.channels.find("name","general")
-    if(message.channel != patreonChannel && message.channel != generalChannel) return;
+    //if(message.channel != patreonChannel && message.channel != generalChannel) return;
 
     if(!message.member.roles.find('name','Raddleton Patreon')){message.reply("no permission"); return;}; //require premission
     commandfile.run(bot, message, args); //run command
