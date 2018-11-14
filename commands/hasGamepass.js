@@ -26,5 +26,6 @@ module.exports.haspass = async(user,gamepass) => {
 }
 
 module.exports.help = {
-  name: "hasgamepass"
+  name: "hasgamepass",
+  anyone: true,
 }
