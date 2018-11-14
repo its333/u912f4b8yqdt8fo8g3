@@ -35,7 +35,7 @@ module.exports.run = async (bot, message, args) => {
       if(!haspass){
         message.channel.send(new Discord.RichEmbed()
         .setColor(randomColor())
-        .addField("Failed", "you dont down gamepass", true));
+        .addField("Failed", "you dont own gamepass", true));
         throw new Error('abort promise chain'); //break chain
       }
 
