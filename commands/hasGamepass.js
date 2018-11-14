@@ -13,10 +13,16 @@ module.exports.run = async (bot, message, args) => {
   };
 
   const res = await get(`https://inventory.roblox.com/v1/users/${args[0]}/items/GamePass/${args[1]}`).catch(() => null);
-  if (!res || !res.body) return message.reply('There was an error, please try again.');
+  if (!res || !res.body) return message.reply('Error occured');
   return message.channel.send(new Discord.RichEmbed()
     .setColor(randomColor())
     .addField("Ownership", Object.keys(res.body.data).length == 1, true));
+}
+
+module.exports.haspass = async(user,gamepass) => {
+  const res = await get(`https://inventory.roblox.com/v1/users/${user}/items/GamePass/${gamepass}`).catch(() => null);
+  if (!res || !res.body) return null
+  return Object.keys(res.body.data).length == 1
 }
 
 module.exports.help = {
