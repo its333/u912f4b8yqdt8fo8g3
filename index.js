@@ -30,6 +30,7 @@ bot.on("ready", async () => {
   bot.user.setActivity("patreon.com/papane", {type: "PLAYING"});
   
   require("./commands/login.js").run(bot,null); //log bot in
+  require("./commands/groupShout.js").run(bot,null); //group shout stuff
 });
 
 bot.on("message", async message => {
