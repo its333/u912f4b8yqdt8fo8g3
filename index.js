@@ -28,7 +28,7 @@ fs.readdir("./commands/", (err,files) => {
 bot.on("ready", async () => {
   console.log(`${bot.user.username} is online`);
   bot.user.setActivity("patreon.com/papane", {type: "PLAYING"});
-  
+
   require("./commands/login.js").run(bot,null); //log bot in
   require("./commands/groupShout.js").run(bot,null); //group shout stuff
 });
@@ -49,10 +49,16 @@ bot.on("message", async message => {
     //check channel
     var patreonChannel = message.guild.channels.find("name","patreon")
     var generalChannel = message.guild.channels.find("name","general")
-    //if(message.channel != patreonChannel && message.channel != generalChannel) return;
+    if(message.channel != patreonChannel && message.channel != generalChannel) return;
 
-    if(!message.member.roles.find('name','Raddleton Patreon')){message.reply("no permission"); return;}; //require premission
-    commandfile.run(bot, message, args); //run command
+    if(message.member.roles.find('name','Raddleton Patreon' || //require premission
+      commandfile.help["Anyone"])){ //anyone can use
+        commandfile.run(bot, message, args); //run command
+    }else{
+      message.reply("no permission");
+      return;
+    };
+
   }
 
 
