@@ -52,7 +52,7 @@ bot.on("message", async message => {
     if(message.channel != patreonChannel && message.channel != generalChannel) return;
 
     if(message.member.roles.find('name','Raddleton Patreon' || //require premission
-      commandfile.help["Anyone"])){ //anyone can use
+      commandfile.help["anyone"])){ //anyone can use
         commandfile.run(bot, message, args); //run command
     }else{
       message.reply("no permission");
