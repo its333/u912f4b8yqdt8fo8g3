@@ -49,7 +49,7 @@ bot.on("message", async message => {
     //check channel
     var patreonChannel = message.guild.channels.find("name","patreon")
     var generalChannel = message.guild.channels.find("name","general")
-    if(message.channel != patreonChannel && message.channel != generalChannel) return;
+    //if(message.channel != patreonChannel && message.channel != generalChannel) return;
 
     if(message.member.roles.find('name','Raddleton Patreon' || //require premission
       commandfile.help["anyone"])){ //anyone can use
