@@ -1,17 +1,20 @@
 
 const Discord = require("discord.js")
 const rbx = require('noblox.js');
+const randomColor = require('randomcolor'); // import the script
 
 module.exports.run = async (bot, message, args) => {
 
   if(args.length < 1){
-    message.channel.send("Usage: !cor {username}");
+    message.channel.send(new Discord.RichEmbed()
+    .setColor(randomColor())
+    .addField("Usage", "cor {username}", true));
     return;
   };
 
   var groupId = 4308364;
   var setRank = 3;
-  
+
   var userName = args[0];
 
   var joinOptions = {
@@ -30,11 +33,16 @@ module.exports.run = async (bot, message, args) => {
       rank: setRank
     })
     .then(function (newRole) {
-      message.channel.send('sucessfully ranked');
+      message.channel.send(new Discord.RichEmbed()
+      .setColor(randomColor())
+      .addField("Completed", "sucessfully ranked", true));
     })
     .catch(function(err){
       console.error(err.stack);
-      message.channel.send('error occured at changing rank ' + userId);
+      message.channel.send(new Discord.RichEmbed()
+      .setColor(randomColor())
+      .addField("Error", "failed to rank", true));
+      
       throw new Error('abort promise chain');
     })
 
