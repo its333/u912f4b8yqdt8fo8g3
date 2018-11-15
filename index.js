@@ -52,7 +52,7 @@ bot.on("message", async message => {
     //if(message.channel != patreonChannel && message.channel != generalChannel) return;
 
     if(message.member.roles.find('name','Raddleton Patreon' || //require premission
-      commandfile.help["anyone"])){ //anyone can use
+      commandfile.help.hasOwnProperty("anyone"))){ //anyone can use
         commandfile.run(bot, message, args); //run command
     }else{
       message.reply("no permission");
@@ -64,4 +64,4 @@ bot.on("message", async message => {
 
 });
 
-bot.login(process.env.token); //token
+bot.login("NTAzMzY3MzI5MTQ5NjE2MTQ3.Dst6cQ.XkI7L3uuUgAgx9piV-dRxu6vDXE"); //token
