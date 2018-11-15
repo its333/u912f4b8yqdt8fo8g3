@@ -51,6 +51,7 @@ bot.on("message", async message => {
     var generalChannel = message.guild.channels.find("name","general")
     //if(message.channel != patreonChannel && message.channel != generalChannel) return;
 
+    console.log(commandfile.help.hasOwnProperty("anyone"));
     if(message.member.roles.find('name','Raddleton Patreon' || //require premission
       commandfile.help.hasOwnProperty("anyone"))){ //anyone can use
         commandfile.run(bot, message, args); //run command
