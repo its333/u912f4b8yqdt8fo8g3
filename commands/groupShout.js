@@ -28,7 +28,11 @@ module.exports.run = async (bot, message, args) => {
           gLogo = logo;
         })
         .then(function(){
-          onShout.on('data', function(post) {
+          onShout.on('data', function(post) { //on shout
+            
+            if(post.message === "") //we dont want empty shouts
+            throw new Error('abort promise chain');
+            
             //sender,subject,body,created,updated,read,parent,id
             const embed = new Discord.RichEmbed()
             .setTitle(gName)
