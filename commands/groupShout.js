@@ -55,7 +55,7 @@ module.exports.run = async (bot, message, args) => {
             var guilds = bot.guilds; //all the server the bot is in
             try {
                 guilds.map((guild) => {
-                  var c = guild.channels.find("name","group-shout");
+                  var c = guild.channels.find("name","group-shouts");
                   if(c)
                   c.send({embed}); //send in channel
                 });
